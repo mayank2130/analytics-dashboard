@@ -26,6 +26,19 @@ export class Analytics {
     if (!opts?.persist) await redis.expire(key, this.retention);
   }
 
+  async retrieveDays(namespace: string, nDays: number) {
+    type AnalyticsPromise = ReturnType<typeof analytics.retrieve>
+    const promises: AnalyticsPromise[] = []
+
+    for(let i = 0; i < nDays; i++) {
+      const formattedDate = getDate(i);
+      const promise = analytics.retrieve(namespace, formattedDate)
+      promises.push(promise)      
+    }
+
+    const fetched = await Promise.all(promises)
+  }
+
   async retrieve(namespace: string, date: string) {
     const res = await redis.hgetall<Record<string, string>>(
       `analytics::${namespace}::${date}`
