@@ -1,11 +1,13 @@
-import React from 'react'
+import { analytics } from "@/utils/analytics";
+import React from "react";
 
-type Props = {}
+type Props = {};
 
-const Analytics = (props: Props) => {
-  return (
-    <div>Analytics</div>
-  )
-}
+const Page = async (props: Props) => {
 
-export default Analytics
+  const pageview = await analytics.retrieve("pageview", "28/09/2024");
+
+  return <p>{JSON.stringify(pageview)}</p>;
+};
+
+export default Page;
