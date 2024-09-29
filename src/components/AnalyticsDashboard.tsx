@@ -1,6 +1,5 @@
 "use client";
 
-import { analytics } from "@/utils/analytics";
 import { BarChart, Card } from "@tremor/react";
 import { ArrowDownRight, ArrowRight, ArrowUpRight } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
@@ -8,7 +7,10 @@ import ReactCountryFlag from "react-country-flag";
 interface AnalyticsDashboardProps {
   avgVisitorsPerDay: string;
   amtVisitorsToday: number;
-  timeseriesPageviews: Awaited<ReturnType<typeof analytics.retrieveDays>>;
+  timeseriesPageviews: {
+    date: string;
+    events: { [key: string]: number }[];
+  }[];
   topCountries: [string, number][];
 }
 
@@ -75,7 +77,7 @@ const AnalyticsDashboard = ({
 
       <Card className="flex flex-col sm:grid grid-cols-4 gap-6">
         <h2 className="w-full text-dark-tremor-content-strong text-center sm:left-left font-semibold text-xl">
-          This weeks top visitors:
+          This week's top visitors:
         </h2>
         <div className="col-span-3 flex items-center justify-between flex-wrap gap-8">
           {topCountries?.map(([countryCode, number]) => {
@@ -92,7 +94,6 @@ const AnalyticsDashboard = ({
                   svg
                   countryCode={countryCode}
                 />
-
                 <p className="text-tremor-content sm:text-dark-tremor-content-strong">
                   {number}
                 </p>
