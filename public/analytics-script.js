@@ -10,7 +10,7 @@
     data.append('language', navigator.language);
     data.append('timestamp', new Date().toISOString());
 
-    fetch('/api/analytics', {
+    fetch('https://analytics-dashboard-ivory.vercel.app/api/analytics', {
       method: 'POST',
       body: data
     }).catch(console.error);
