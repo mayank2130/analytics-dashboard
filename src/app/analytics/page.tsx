@@ -33,15 +33,15 @@ export default function AnalyticsPage() {
     <div className="min-h-screen w-full py-12 flex justify-center items-center">
       <div className="relative w-full max-w-6xl mx-auto text-white">
         <AnalyticsDashboard
-        // @ts-ignore
+        // @ts-expect-error
         websiteId={websiteId}
-        // @ts-ignore
+        // @ts-expect-error
         avgVisitorsPerDay={analyticsData.avgVisitorsPerDay}
-        // @ts-ignore
+        // @ts-expect-error
         amtVisitorsToday={analyticsData.amtVisitorsToday}
-        // @ts-ignore
+        // @ts-expect-error
         timeseriesPageviews={analyticsData.timeseriesPageviews}
-        // @ts-ignore
+        // @ts-expect-error
           topCountries={analyticsData.topCountries}
         />
       </div>
