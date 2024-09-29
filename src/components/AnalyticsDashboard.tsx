@@ -77,7 +77,7 @@ const AnalyticsDashboard = ({
 
       <Card className="flex flex-col sm:grid grid-cols-4 gap-6">
         <h2 className="w-full text-dark-tremor-content-strong text-center sm:left-left font-semibold text-xl">
-          This week's top visitors:
+          This week&apos;s top visitors:
         </h2>
         <div className="col-span-3 flex items-center justify-between flex-wrap gap-8">
           {topCountries?.map(([countryCode, number]) => {
